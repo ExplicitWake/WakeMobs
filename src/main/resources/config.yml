@@ -1,0 +1,30 @@
+settings:
+  # Instant - начисление сразу после убийства моба.
+  # Collecting - начисление после подбора уникального предмета, выпавшего с моба.
+  type-drop: Instant
+  boosters: # ВНИМАНИЕ! Вводить именно ID группы. Только в формате плавающей точки.
+    vip: 1.0
+    premium: 1.5
+    owner: 2.0
+
+items-settings: # Настройки предмета.
+  item-id: EXPERIENCE_BOTTLE
+  enchant-effect: true
+
+notification-settings:
+  sound:
+    yaw-volume: 1.0
+    pitch-volume: 1.0
+    enabled: true
+    sound-id: ENTITY_PLAYER_LEVELUP
+  actionbar:
+    enabled: true
+    message: "&#37FF00[ℹ] &fВы получили &e{money}$ &fза убийство моба &7| &7[&ax{booster}&7]"
+  chat:
+    enabled: true
+    message: "&#37FF00[ℹ] &fВы получили &e{money}$ &fмонет за убийство моба&f. &7[&ax{booster}&7]"
+
+messages:
+  help: "&#37FF00&l[WakeMobs] &a/wakemobs reload &7- &fперезагрузить конфигурацию."
+  reload: "&#37FF00&l[WakeMobs] &fКонфигруация &aуспешно&f перезагружена."
+  no-money: "&#37FF00[ℹ] &fК сожалению, вы не получили монет с моба..." # Сообщение, только в actionbar. (Для того, чтобы не засорять чат.)

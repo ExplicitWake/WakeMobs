@@ -1,0 +1,9 @@
+mobs-settings:
+  default:
+    chance-drop: 30
+    min-drop: 10
+    max-drop: 50
+  ZOMBIE:
+    chance-drop: 30
+    min-drop: 10
+    max-drop: 50
