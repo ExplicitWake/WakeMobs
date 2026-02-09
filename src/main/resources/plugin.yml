@@ -1,0 +1,8 @@
+name: WakeMobs
+version: '${project.version}'
+main: ru.awake.wakemobs.WakeMobs
+api-version: '1.16'
+commands:
+  wakemobs: {}
+depend:
+  - Vault

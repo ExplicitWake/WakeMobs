@@ -1,0 +1,6 @@
+mobs-settings:
+  DEFAULT:
+    name: "моба"
+    chance-drop: 70
+    min-drop: 100
+    max-drop: 300
