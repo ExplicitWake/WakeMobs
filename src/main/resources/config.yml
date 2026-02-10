@@ -15,7 +15,7 @@ settings:
 
   percent: 10 # процент выпадаемых монет с игрока.
 
-items-settings: # Настройки предмета.
+item-settings: # Настройки предмета.
   item-id: EXPERIENCE_BOTTLE
   enchant-effect: true
 
