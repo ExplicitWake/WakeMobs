@@ -56,7 +56,7 @@ public class EntityListener implements Listener {
         Player player = livingEntity.getKiller();
 
         if (utils.notNull(player, livingEntity)) {
-            EntityHolder entityHolder = config.getEntities().get(livingEntity.getType().toString());
+            EntityHolder entityHolder = config.getEntityHolder(livingEntity);
             if (utils.isMoneyDrop(entityHolder)) {
                 double money = utils.getMoney(entityHolder.getMinDrop(), entityHolder.getMaxDrop());
                 double booster = utils.getGroupBooster(wakeMobs.getPermission().getPrimaryGroup(player));
