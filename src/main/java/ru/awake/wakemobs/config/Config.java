@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.LivingEntity;
 import ru.awake.wakemobs.WakeMobs;
 import ru.awake.wakemobs.objects.EntityHolder;
 import ru.awake.wakemobs.utils.EventType;
@@ -102,6 +103,13 @@ public class Config {
         int maxDrop = section.getInt("max-drop");
 
         return new EntityHolder(name, chance, minDrop, maxDrop);
+    }
+
+    public EntityHolder getEntityHolder(LivingEntity entity) {
+        String entityName = entity.getType().toString();
+        if (entities.containsKey(entityName))
+            return entities.get(entityName);
+        return entities.get("DEFAULT");
     }
 
 
