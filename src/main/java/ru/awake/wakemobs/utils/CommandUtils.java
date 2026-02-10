@@ -26,9 +26,7 @@ public class CommandUtils {
         return replaceEach(LegacyColorize.colorize(command.getContext()), searchList, replacementList);
     }
 
-
-
-    private void runCommands(List<Command> commands, String[] searchList, String[] replacementList, Player player) {
+    public void runCommands(List<Command> commands, String[] searchList, String[] replacementList, Player player) {
         for (Command command : commands) {
             CommandType commandType = command.getCommandType();
             switch (commandType) {
