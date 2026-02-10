@@ -10,6 +10,7 @@ import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.awake.wakemobs.config.Config;
 import ru.awake.wakemobs.listeners.EntityListener;
+import ru.awake.wakemobs.listeners.ItemListener;
 import ru.awake.wakemobs.utils.CommandUtils;
 import ru.awake.wakemobs.utils.Utils;
 
@@ -41,9 +42,12 @@ public final class WakeMobs extends JavaPlugin {
             setupPerms(getServer().getServicesManager());
         }
         pluginManager.registerEvents(new EntityListener(this), this);
+        pluginManager.registerEvents(new ItemListener(this), this);
     }
 
-    public void onDisable() {}
+    public void onDisable() {
+        getServer().getScheduler().cancelTasks(this);
+    }
 
     private void setupEconomy(ServicesManager servicesManager) {
         economy = getProvider(servicesManager, Economy.class);
