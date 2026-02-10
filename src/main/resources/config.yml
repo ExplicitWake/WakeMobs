@@ -93,4 +93,7 @@ messages:
 listeners:
   ENTITY_DEATH:
     commands:
-      - "[message] Вы убили моба!"
+      - "[message] &fВы убили моба!"
+  PICKUP_ITEM_FROM_ENTITY:
+    commands:
+      - "[message] &fВы подобрали предмет с моба!"
