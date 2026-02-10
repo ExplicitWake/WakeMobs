@@ -4,14 +4,8 @@ settings:
   type-drop: INSTANT
   boosters: # ВНИМАНИЕ! Вводить именно ID группы. Только в формате плавающей точки.
     default: 1.0
-    knight: 1.1
-    guardian: 1.2
-    master: 1.3
-    king: 1
-    elite: 1.5
-    deluxe: 1.6
-    emperor: 1.7
-    phantom: 1.8
+    vip: 1.5
+    premium: 2.0
 
   percent: 10 # процент выпадаемых монет с игрока.
 
