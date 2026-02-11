@@ -19,9 +19,6 @@ import ru.awake.wakemobs.utils.CommandUtils;
 import ru.awake.wakemobs.utils.EventType;
 import ru.awake.wakemobs.utils.TypeDrop;
 import ru.awake.wakemobs.utils.Utils;
-import ru.awake.wakemobs.utils.commands.Command;
-
-import java.util.List;
 
 public class EntityListener implements Listener {
 
