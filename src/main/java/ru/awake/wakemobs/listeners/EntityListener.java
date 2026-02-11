@@ -35,8 +35,6 @@ public class EntityListener implements Listener {
 
     private final BukkitScheduler bukkitScheduler;
 
-    private final List<Command> commands;
-
     private final String[] searchList;
 
     public EntityListener(WakeMobs wakeMobs) {
@@ -45,7 +43,6 @@ public class EntityListener implements Listener {
         this.commandUtils = wakeMobs.getCommandUtils();
         this.config = wakeMobs.getPluginConfig();
         this.bukkitScheduler = wakeMobs.getServer().getScheduler();
-        this.commands = config.getListeners().get(EventType.ENTITY_DEATH);
         this.searchList = new String[] {"{mob-name}", "{money}", "{booster}"};
     }
 
@@ -68,7 +65,7 @@ public class EntityListener implements Listener {
                     case INSTANT:
                         bukkitScheduler.runTaskAsynchronously(wakeMobs, () -> {
                             wakeMobs.getEconomy().depositPlayer(player, result);
-                            commandUtils.runCommands(commands, searchList, replacementList, player);
+                            commandUtils.runCommands(config.getListeners().get(EventType.ENTITY_DEATH), searchList, replacementList, player);
                         });
                         break;
                     case COLLECTING:
