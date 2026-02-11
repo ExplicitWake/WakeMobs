@@ -13,9 +13,6 @@ import ru.awake.wakemobs.config.Config;
 import ru.awake.wakemobs.utils.CommandUtils;
 import ru.awake.wakemobs.utils.EventType;
 import ru.awake.wakemobs.utils.Utils;
-import ru.awake.wakemobs.utils.commands.Command;
-
-import java.util.List;
 
 public class ItemListener implements Listener {
 
@@ -29,6 +26,8 @@ public class ItemListener implements Listener {
 
     private final String[] searchListForEntityItem;
 
+    private final String[] searchListForPlayerItem;
+
     private final Config config;
 
     public ItemListener(WakeMobs wakeMobs) {
@@ -38,6 +37,7 @@ public class ItemListener implements Listener {
         this.bukkitScheduler = wakeMobs.getServer().getScheduler();
         this.config = wakeMobs.getPluginConfig();
         this.searchListForEntityItem = new String[] {"{mob-name}", "{money}", "{booster}"};
+        this.searchListForPlayerItem = new String[] {"{money}", "{player}"};
     }
 
     @EventHandler
@@ -64,20 +64,26 @@ public class ItemListener implements Listener {
         ItemStack itemStack = event.getItem().getItemStack();
         if (utils.isMoneyItem(itemStack)) {
             int customModelData = itemStack.getItemMeta().getCustomModelData();
+            String displayName = itemStack.getItemMeta().getDisplayName();
+            String[] results = displayName.split("\\|");
+            double result = Double.parseDouble(results[0]);
             switch (customModelData) {
                 case 529:
-                    String displayName = itemStack.getItemMeta().getDisplayName();
-                    String[] results = displayName.split("\\|");
-                    double result = Double.parseDouble(results[0]);
                     final String[] replacementListForEntity = {results[3], results[1], results[2]};
                     bukkitScheduler.runTaskAsynchronously(wakeMobs, () -> {
                        wakeMobs.getEconomy().depositPlayer(player, result);
                        commandUtils.runCommands(config.getListeners().get(EventType.PICKUP_ITEM_FROM_ENTITY), searchListForEntityItem, replacementListForEntity, player);
                     });
-                    event.getItem().remove();
-                    event.setCancelled(true);
                     break;
+                case 530:
+                    final String[] replacementListForPlayer = {results[1], results[2]};
+                    bukkitScheduler.runTaskAsynchronously(wakeMobs, () -> {
+                        wakeMobs.getEconomy().depositPlayer(player, result);
+                        commandUtils.runCommands(config.getListeners().get(EventType.PICKUP_ITEM_FROM_PLAYER), searchListForPlayerItem, replacementListForPlayer, player);
+                    });
             }
+            event.getItem().remove();
+            event.setCancelled(true);
         }
     }
 
