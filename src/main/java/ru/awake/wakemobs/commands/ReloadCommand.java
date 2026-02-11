@@ -29,9 +29,7 @@ public class ReloadCommand implements TabExecutor {
         if (commandSender.isOp()) {
             if (strings.length == 1 && strings[0].equals("reload")) {
                 wakeMobs.getServer().getScheduler().runTaskAsynchronously(wakeMobs, () -> {
-                    wakeMobs.reloadConfig();
-                    final FileConfiguration config = wakeMobs.getConfig();
-                    this.config.setupConfig(config);
+                    this.config.setupConfig();
                     this.config.setupMobsSettings();
                     commandSender.sendMessage(this.config.getReloadMessage());
                 });
