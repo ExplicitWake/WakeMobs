@@ -89,7 +89,23 @@ listeners:
     commands:
       - "[sound] ENTITY_PLAYER_LEVELUP;1;1"
       - "[actionbar] &#37FF00[ℹ] &fВы получили &e{money}$ &fза убийство {mob-name}&f. &7[&ax{booster}&7]"
+  PLAYER_DEATH_ENVIRONMENT:
+    commands:
+      - "[message] &c[☠] &fПомянем. Вы погибли!"
+      - "[message] &f    &fКоординаты: &a[{x}, {y}, {z}]"
+      - "[message] &f    &fИз-за смерти вы потеряли: &e{money}$ &fмонет."
+  KILLING_PLAYER:
+    commands:
+      - "[message] &c[☠] &fПомянем. Вы погибли!"
+      - "[message] &f    &fКоординаты: &a[{x}, {y}, {z}]"
+      - "[message] &f    &fВас убил &6{killer}&f, вы потеряли &e{money}$"
+  MONEY_FROM_PLAYER:
+    commands:
+      - "[message] &fВы получили &e{money}$ &fиз-за смерти игрока &a{player}"
   PICKUP_ITEM_FROM_ENTITY:
     commands:
       - "[sound] ENTITY_PLAYER_LEVELUP;1;1"
-      - "[actionbar] &#37FF00[ℹ] &fВы получили &e{money}$ &fза предмет с {mob-name}&f. &7[&ax{booster}&7]"
+      - "[actionbar] &#37FF00[ℹ] &fВы подобрали &e{money}$ &fс {mob-name}&f. &7[&ax{booster}&7]"
+  PICKUP_ITEM_FROM_PLAYER:
+    commands:
+      - "[message] &fВы подобрали &e{money}$ &fс игрока &a{player}"
