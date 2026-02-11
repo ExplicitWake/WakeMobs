@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitScheduler;
 import ru.awake.wakemobs.WakeMobs;
+import ru.awake.wakemobs.config.Config;
 import ru.awake.wakemobs.utils.CommandUtils;
 import ru.awake.wakemobs.utils.EventType;
 import ru.awake.wakemobs.utils.Utils;
@@ -28,15 +29,15 @@ public class ItemListener implements Listener {
 
     private final String[] searchListForEntityItem;
 
-    private final List<Command> commandsForEntityItem;
+    private final Config config;
 
     public ItemListener(WakeMobs wakeMobs) {
         this.wakeMobs = wakeMobs;
         this.utils = wakeMobs.getUtils();
         this.commandUtils = wakeMobs.getCommandUtils();
         this.bukkitScheduler = wakeMobs.getServer().getScheduler();
+        this.config = wakeMobs.getPluginConfig();
         this.searchListForEntityItem = new String[] {"{mob-name}", "{money}", "{booster}"};
-        this.commandsForEntityItem = wakeMobs.getPluginConfig().getListeners().get(EventType.PICKUP_ITEM_FROM_ENTITY);
     }
 
     @EventHandler
@@ -71,7 +72,7 @@ public class ItemListener implements Listener {
                     final String[] replacementListForEntity = {results[3], results[1], results[2]};
                     bukkitScheduler.runTaskAsynchronously(wakeMobs, () -> {
                        wakeMobs.getEconomy().depositPlayer(player, result);
-                       commandUtils.runCommands(commandsForEntityItem, searchListForEntityItem, replacementListForEntity, player);
+                       commandUtils.runCommands(config.getListeners().get(EventType.PICKUP_ITEM_FROM_ENTITY), searchListForEntityItem, replacementListForEntity, player);
                     });
                     event.getItem().remove();
                     event.setCancelled(true);
