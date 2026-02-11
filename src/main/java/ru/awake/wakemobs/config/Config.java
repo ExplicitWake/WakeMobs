@@ -149,4 +149,16 @@ public class Config {
         return YamlConfiguration.loadConfiguration(file);
     }
 
+    public void setupConfig(FileConfiguration configuration) {
+        setupSettings(configuration);
+        setupItemSettings(configuration);
+        setupMessages(configuration);
+        setupListeners(configuration);
+    }
+
+    public void setupMobsSettings() {
+        final FileConfiguration mobsSettings = getFile(wakeMobs.getDataFolder().getAbsolutePath(), "mobs-settings.yml");
+        setupEntities(mobsSettings);
+    }
+
 }
