@@ -25,16 +25,13 @@ public final class WakeMobs extends JavaPlugin {
 
     private Config pluginConfig;
 
-    private FileConfiguration mobsSettings;
-
     private Utils utils;
 
     private CommandUtils commandUtils;
 
     public void onEnable() {
-        saveDefaultConfig();
         pluginConfig = new Config(this);
-        pluginConfig.setupConfig(getConfig());
+        pluginConfig.setupConfig();
         pluginConfig.setupMobsSettings();
         utils = new Utils(this);
         commandUtils = new CommandUtils(this);
