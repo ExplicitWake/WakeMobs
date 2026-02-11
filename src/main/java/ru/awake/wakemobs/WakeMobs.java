@@ -34,8 +34,8 @@ public final class WakeMobs extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         pluginConfig = new Config(this);
-        mobsSettings = getPluginConfig().getFile(getDataFolder().getAbsolutePath(), "mobs-settings.yml");
-        setupConfig();
+        pluginConfig.setupConfig(getConfig());
+        pluginConfig.setupMobsSettings();
         utils = new Utils(this);
         commandUtils = new CommandUtils(this);
         PluginManager pluginManager = getServer().getPluginManager();
@@ -66,14 +66,6 @@ public final class WakeMobs extends JavaPlugin {
     private <T> T getProvider(ServicesManager servicesManager, Class<T> clazz) {
         final RegisteredServiceProvider<T> provider = servicesManager.getRegistration(clazz);
         return provider != null ? provider.getProvider() : null;
-    }
-
-    private void setupConfig() {
-        getPluginConfig().setupSettings(getConfig());
-        getPluginConfig().setupItemSettings(getConfig());
-        getPluginConfig().setupMessages(getConfig());
-        getPluginConfig().setupListeners(getConfig());
-        getPluginConfig().setupEntities(getMobsSettings());
     }
 
 }
