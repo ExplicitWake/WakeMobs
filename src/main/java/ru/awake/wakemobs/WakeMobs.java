@@ -3,11 +3,13 @@ package ru.awake.wakemobs;
 import lombok.Getter;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import ru.awake.wakemobs.commands.ReloadCommand;
 import ru.awake.wakemobs.config.Config;
 import ru.awake.wakemobs.listeners.EntityListener;
 import ru.awake.wakemobs.listeners.ItemListener;
@@ -43,6 +45,10 @@ public final class WakeMobs extends JavaPlugin {
         }
         pluginManager.registerEvents(new EntityListener(this), this);
         pluginManager.registerEvents(new ItemListener(this), this);
+        PluginCommand command = getCommand("wakemobs");
+        ReloadCommand reloadCommand = new ReloadCommand(this);
+        command.setExecutor(reloadCommand);
+        command.setTabCompleter(reloadCommand);
     }
 
     public void onDisable() {
