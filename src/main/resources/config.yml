@@ -92,4 +92,4 @@ listeners:
   PICKUP_ITEM_FROM_ENTITY:
     commands:
       - "[sound] ENTITY_PLAYER_LEVELUP;1;1"
-      - "[message] &#37FF00[ℹ] &fВы получили &e{money}$ &fза предмет с {mob-name}&f. &7[&ax{booster}&7]"
+      - "[actionbar] &#37FF00[ℹ] &fВы получили &e{money}$ &fза предмет с {mob-name}&f. &7[&ax{booster}&7]"
