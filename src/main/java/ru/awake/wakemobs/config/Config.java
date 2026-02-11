@@ -26,10 +26,6 @@ public class Config {
 
     private final WakeMobs wakeMobs;
 
-    public Config(WakeMobs wakeMobs) {
-        this.wakeMobs = wakeMobs;
-    }
-
     private TypeDrop typeDrop;
 
     private final Map<String, Double> boosters = new HashMap<>();;
@@ -46,9 +42,15 @@ public class Config {
 
     private String noMoneyMessage;
 
-    private final Map<EventType, List<Command>> listeners = new HashMap<>();
+    private final Map<EventType, List<Command>> listeners;
 
-    private final Map<String, EntityHolder> entities = new HashMap<>();
+    private final Map<String, EntityHolder> entities;
+
+    public Config(WakeMobs wakeMobs) {
+        this.wakeMobs = wakeMobs;
+        this.listeners = new HashMap<>();
+        this.entities = new HashMap<>();
+    }
 
     public void setupSettings(FileConfiguration configuration) {
         ConfigurationSection settings = configuration.getConfigurationSection("settings");
@@ -75,19 +77,17 @@ public class Config {
     }
 
     public void setupListeners(FileConfiguration configuration) {
-        if (!(listeners.isEmpty()))
-            listeners.clear();
+        listeners.clear();
         ConfigurationSection listeners = configuration.getConfigurationSection("listeners");
         for (String string : listeners.getKeys(false)) {
-            EventType eventType = EventType.getEventType(string);
+            EventType eventType = EventType.valueOf(string.toUpperCase());
             List<Command> commands = getCommandList(listeners.getStringList(string + ".commands"));
             this.listeners.put(eventType, commands);
         }
     }
 
     public void setupEntities(FileConfiguration configuration) {
-        if (!(entities.isEmpty()))
-            entities.clear();
+        entities.clear();
         ConfigurationSection mobsSettings = configuration.getConfigurationSection("mobs-settings");
         for (String string : mobsSettings.getKeys(false)) {
             ConfigurationSection entity = mobsSettings.getConfigurationSection(string);
@@ -149,7 +149,8 @@ public class Config {
         return YamlConfiguration.loadConfiguration(file);
     }
 
-    public void setupConfig(FileConfiguration configuration) {
+    public void setupConfig() {
+        final FileConfiguration configuration = getFile(wakeMobs.getDataFolder().getAbsolutePath(), "config.yml");
         setupSettings(configuration);
         setupItemSettings(configuration);
         setupMessages(configuration);
