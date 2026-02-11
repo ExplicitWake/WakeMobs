@@ -3,13 +3,11 @@ package ru.awake.wakemobs.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.awake.wakemobs.WakeMobs;
 import ru.awake.wakemobs.config.Config;
 
-import java.io.File;
 import java.util.List;
 
 public class ReloadCommand implements TabExecutor {
