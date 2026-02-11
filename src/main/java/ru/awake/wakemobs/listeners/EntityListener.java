@@ -62,7 +62,7 @@ public class EntityListener implements Listener {
                 double booster = utils.getGroupBooster(wakeMobs.getPermission().getPrimaryGroup(player));
                 double result = money * booster;
                 String formatResult = utils.decimalFormat(result);
-                final String[] replacementList = {entityHolder.getEntityName(), formatResult, String.valueOf(result)};
+                final String[] replacementList = {entityHolder.getEntityName(), formatResult, String.valueOf(booster)};
                 TypeDrop typeDrop = config.getTypeDrop();
                 switch (typeDrop) {
                     case INSTANT:
