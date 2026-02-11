@@ -16,7 +16,7 @@ item-settings: # Настройки предмета.
 messages:
   help: "&#37FF00&l[WakeMobs] &a/wakemobs reload &7- &fперезагрузить конфигурацию."
   reload: "&#37FF00&l[WakeMobs] &fКонфигруация &aуспешно&f перезагружена."
-  no-money: "&fВы &#FF0000не получили&f монет с моба." # В актионбар.
+  no-money: "&fВы &#FF0000не получили&f монет с моба." # Сообщение, только в actionbar. (Для того, чтобы не засорять чат.)
 
 # Слушатели
 # Выполняют ряд команд относительно ивенту.
@@ -87,7 +87,9 @@ messages:
 listeners:
   ENTITY_DEATH:
     commands:
-      - "[message] &fВы убили моба!"
+      - "[sound] ENTITY_PLAYER_LEVELUP;1;1"
+      - "[actionbar] &#37FF00[ℹ] &fВы получили &e{money}$ &fза убийство {mob-name}&f. &7[&ax{booster}&7]"
   PICKUP_ITEM_FROM_ENTITY:
     commands:
-      - "[message] &fВы подобрали предмет с моба!"
+      - "[sound] ENTITY_PLAYER_LEVELUP;1;1"
+      - "[message] &#37FF00[ℹ] &fВы получили &e{money}$ &fза предмет с {mob-name}&f. &7[&ax{booster}&7]"
