@@ -7,12 +7,4 @@ public enum EventType {
     MONEY_FROM_PLAYER,
     PICKUP_ITEM_FROM_ENTITY,
     PICKUP_ITEM_FROM_PLAYER;
-
-    public static EventType getEventType(String string) {
-        try {
-            return valueOf(string);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
 }
