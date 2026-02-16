@@ -21,7 +21,7 @@ public class Utils {
     private final Random RANDOM = new Random();
 
     public String decimalFormat(double formatted) {
-        DecimalFormat format = new DecimalFormat("#,###.#");
+        DecimalFormat format = new DecimalFormat("#,##0.00");
         return format.format(formatted);
     }
 
