@@ -7,7 +7,8 @@ settings:
     vip: 1.5
     premium: 2.0
 
-  percent: 10 # процент выпадаемых монет с игрока.
+  min-percent: 5 # процент выпадаемых монет с игрока.
+  max-percent: 10
 
 item-settings: # Настройки предмета.
   item-id: EXPERIENCE_BOTTLE
