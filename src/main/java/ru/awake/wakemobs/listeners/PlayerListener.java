@@ -51,7 +51,7 @@ public class PlayerListener implements Listener {
         Player player = event.getEntity();
         Player killer = player.getKiller();
         double balance = wakeMobs.getEconomy().getBalance(player);
-        double percent = config.getPercent() / 100.0D;
+        double percent = utils.getPercent(config.getMinPercent(), config.getMaxPercent());
         double result = balance * percent;
         String formatResult = utils.decimalFormat(result);
         Location loc = player.getLocation();
