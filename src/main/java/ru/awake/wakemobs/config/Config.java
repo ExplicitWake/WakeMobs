@@ -30,7 +30,9 @@ public class Config {
 
     private final Map<String, Double> boosters = new HashMap<>();;
 
-    private int percent;
+    private int minPercent;
+
+    private int maxPercent;
 
     private String itemId;
 
@@ -60,7 +62,8 @@ public class Config {
             double booster = boosters.getDouble(string);
             this.boosters.put(string, booster);
         }
-        percent = settings.getInt("percent");
+        minPercent = settings.getInt("min-percent");
+        maxPercent = settings.getInt("max-percent");
     }
 
     public void setupItemSettings(FileConfiguration configuration) {
