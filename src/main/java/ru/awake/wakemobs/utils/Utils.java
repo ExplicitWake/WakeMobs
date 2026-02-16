@@ -23,8 +23,7 @@ public class Utils {
     private final Random RANDOM = new Random();
 
     public String decimalFormat(double formatted) {
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.ROOT);
-        DecimalFormat format = new DecimalFormat("#.#", symbols);
+        DecimalFormat format = new DecimalFormat("#,###.#");
         return format.format(formatted);
     }
 
