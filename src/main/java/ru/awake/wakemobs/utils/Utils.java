@@ -25,11 +25,17 @@ public class Utils {
     private final Random RANDOM = new Random();
 
     public String decimalFormat(double formatted) {
+        numberFormat.setMaximumFractionDigits(2);
         return numberFormat.format(formatted);
     }
 
     public double getMoney(int minDrop, int maxDrop) {
         return RANDOM.nextDouble(minDrop, maxDrop);
+    }
+
+    public double getPercent(int minPercent, int maxPercent) {
+        int random = RANDOM.nextInt(minPercent, maxPercent);
+        return random / 100.0D;
     }
 
     public boolean isMoneyDrop(EntityHolder entityHolder) {
