@@ -8,8 +8,6 @@ import ru.awake.wakemobs.config.Config;
 import ru.awake.wakemobs.objects.EntityHolder;
 
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 import java.util.Random;
 
 public class Utils {
