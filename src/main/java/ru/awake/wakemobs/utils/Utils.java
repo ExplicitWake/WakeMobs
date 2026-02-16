@@ -7,22 +7,25 @@ import ru.awake.wakemobs.WakeMobs;
 import ru.awake.wakemobs.config.Config;
 import ru.awake.wakemobs.objects.EntityHolder;
 
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Random;
 
 public class Utils {
 
     private final Config config;
 
+    private final NumberFormat numberFormat;
+
     public Utils(WakeMobs wakeMobs) {
         this.config = wakeMobs.getPluginConfig();
+        this.numberFormat = NumberFormat.getNumberInstance(Locale.ROOT);
     }
 
     private final Random RANDOM = new Random();
 
     public String decimalFormat(double formatted) {
-        DecimalFormat format = new DecimalFormat("#,##0.00");
-        return format.format(formatted);
+        return numberFormat.format(formatted);
     }
 
     public double getMoney(int minDrop, int maxDrop) {
